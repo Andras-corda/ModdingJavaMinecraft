@@ -73,10 +73,29 @@ GitHub, règles horizontales, liens/images.
 4. Dans [`index.html`](index.html), ajustez `window.SITE_CONFIG.repoUrl` pour pointer vers
    votre dépôt (lien « GitHub » de la barre supérieure).
 
-Les chemins sont **relatifs** et le routage se fait par **ancre** : le site fonctionne à la
-racine d'un domaine comme dans un sous-dossier, sans configuration.
+Les chemins sont **relatifs** (résolus à partir de l'emplacement de `assets/js/app.js`) et le
+routage se fait par **ancre** : le site fonctionne à la racine d'un domaine comme dans un
+sous-dossier (`https://user.github.io/mon-depot/`), sans configuration.
 
 Détails et déploiement via GitHub Actions : voir la page **GitHub** du guide lui-même.
+
+## Dépannage GitHub Pages
+
+**« Impossible de charger `xxx.md` »** :
+
+1. **Testez l'URL directement** dans le navigateur :
+   `https://<user>.github.io/<depot>/content/xxx.md`
+   - **404** → le fichier n'est pas sur GitHub (pas `git add` / `git push`), ou la **casse**
+     du nom diffère (GitHub est sensible à la casse, Git sous Windows non — faites
+     `git config core.ignorecase false` puis re-committez si besoin).
+   - **Ça marche** → videz le cache (`Ctrl+F5`) ; le problème venait d'un déploiement en cours.
+2. Vérifiez que le fichier **`.nojekyll`** (vide, à la racine) est bien présent dans le dépôt.
+   Sans lui, GitHub lance Jekyll, ce qui peut faire échouer ou retarder le déploiement.
+   Les fichiers commençant par `.` sont parfois oubliés : `git add .nojekyll`.
+3. *Settings → Pages* : le bandeau doit indiquer **« Your site is live »** et le dernier
+   déploiement (onglet *Actions*) doit être **vert**. Un build Jekyll rouge = site figé sur
+   l'ancienne version.
+4. `git ls-files content/ | wc -l` doit renvoyer le nombre de pages attendu (≥ 52).
 
 ## Licence
 

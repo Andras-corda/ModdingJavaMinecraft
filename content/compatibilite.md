@@ -165,4 +165,4 @@ Si d'autres mods doivent piloter le vôtre :
 | Autre mod pas chargé « avant » le vôtre | confusion `ordering` vs présence | `ordering` ≠ garantie ; utiliser `optional` + `isLoaded` |
 | Votre minerai inutilisable par les autres mods | tags `forge:` absents | fournir `forge:ores/*`, `forge:ingots/*`… |
 
-Page suivante : **[Bonnes pratiques (checklist)](#/bonnes-pratiques)**.
+Page suivante : **[Bibliothèques tierces : le principe](#/librairies-tierces)**.

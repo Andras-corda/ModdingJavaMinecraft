@@ -32,10 +32,16 @@
 
 ## Bibliothèques & intégrations courantes
 
-- **JEI (Just Enough Items)** — API de recettes : [github.com/mezz/JustEnoughItems](https://github.com/mezz/JustEnoughItems)
-- **Curios API** — emplacements d'équipement : [github.com/TheIllusiveC4/Curios](https://github.com/TheIllusiveC4/Curios)
-- **GeckoLib** — animations : [github.com/bernie-g/geckolib](https://github.com/bernie-g/geckolib)
-- **Patchouli** — livres de guide en jeu : [github.com/VazkiiMods/Patchouli](https://github.com/VazkiiMods/Patchouli)
+Intégration détaillée dans le chapitre **[Bibliothèques tierces](#/librairies-tierces)**.
+
+- **GeckoLib** — animations : [wiki](https://github.com/bernie-g/geckolib/wiki) · [Modrinth](https://modrinth.com/mod/geckolib)
+- **Pehkui** — mise à l'échelle des entités : [wiki](https://github.com/Virtuoel/Pehkui/wiki) · [Modrinth](https://modrinth.com/mod/pehkui)
+- **JEI (Just Enough Items)** — viewer de recettes : [wiki](https://github.com/mezz/JustEnoughItems/wiki)
+- **Curios API** — emplacements d'équipement : [wiki](https://github.com/TheIllusiveC4/Curios/wiki)
+- **Patchouli** — livres de guide en jeu : [doc](https://vazkiimods.github.io/Patchouli/)
+- **Cloth Config API** — écrans de configuration : [doc](https://shedaniel.gitbook.io/cloth-config/)
+- **The One Probe** / **Jade** — infobulle d'information : [TOP](https://github.com/McJtyMods/TheOneProbe) · [Jade](https://github.com/Snownee/Jade)
+- **Registrate** — enregistrement concis : [github.com/tterrag1098/Registrate](https://github.com/tterrag1098/Registrate)
 
 ## Publication
 

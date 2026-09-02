@@ -36,6 +36,7 @@ Il est pensé pour être suivi aussi bien avec **IntelliJ IDEA** (JetBrains) qu'
 - **Recettes concrètes** : [raycast](#/raycast), [items à comportement](#/item-comportement), [blocs avec interface](#/block-entity), [entités & projectiles](#/entite-projectile), [génération de minerai](#/worldgen-minerai), [raccourcis & HUD](#/hud-keybinds).
 - **En équipe** : [Git](#/git), [GitHub : dépôt, CI, releases](#/github).
 - **Aller plus loin** : [mixins](#/mixins), [access transformers](#/access-transformers), [compatibilité inter-mods](#/compatibilite).
+- **Bibliothèques tierces** : [le principe](#/librairies-tierces), [GeckoLib](#/geckolib), [Pehkui](#/pehkui), [JEI](#/jei), [Curios](#/curios), [Patchouli](#/patchouli), [Cloth Config](#/cloth-config).
 - **Qualité** : [bonnes pratiques](#/bonnes-pratiques), [tests](#/tests), [performance](#/performance), [débogage](#/debogage).
 
 ## Comment ce guide est construit

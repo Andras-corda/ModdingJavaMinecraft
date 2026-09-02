@@ -98,6 +98,18 @@
       ]
     },
     {
+      "group": "Bibliothèques tierces",
+      "pages": [
+        { "slug": "librairies-tierces", "title": "Le principe (dépendances)", "file": "librairies-tierces.md" },
+        { "slug": "geckolib", "title": "GeckoLib : animations", "file": "geckolib.md" },
+        { "slug": "pehkui", "title": "Pehkui : mise à l'échelle", "file": "pehkui.md" },
+        { "slug": "jei", "title": "JEI : intégration des recettes", "file": "jei.md" },
+        { "slug": "curios", "title": "Curios : emplacements d'équipement", "file": "curios.md" },
+        { "slug": "patchouli", "title": "Patchouli : livre de guide", "file": "patchouli.md" },
+        { "slug": "cloth-config", "title": "Cloth Config : écran de configuration", "file": "cloth-config.md" }
+      ]
+    },
+    {
       "group": "Qualité & référence",
       "pages": [
         { "slug": "bonnes-pratiques", "title": "Bonnes pratiques (checklist)", "file": "bonnes-pratiques.md" },

@@ -13,7 +13,29 @@
   "use strict";
 
   var CONFIG = window.SITE_CONFIG || {};
-  var CONTENT_DIR = "content/";
+
+  // Base du site résolue à partir de l'emplacement RÉEL de ce script
+  // (assets/js/app.js) plutôt que de l'URL courante du document. Cela évite
+  // les erreurs « Failed to fetch » quand le site est servi dans un
+  // sous-dossier (GitHub Pages de projet : /nom-du-depot/) ou sans « / »
+  // final dans l'URL.
+  var SITE_BASE = (function () {
+    try {
+      var self =
+        (document.currentScript && document.currentScript.src) ||
+        (function () {
+          var s = document.getElementsByTagName("script");
+          for (var i = s.length - 1; i >= 0; i--) {
+            if (s[i].src && /\/app\.js(\?|$)/.test(s[i].src)) return s[i].src;
+          }
+          return null;
+        })();
+      if (self) return new URL("../../", self).href; // assets/js/ -> racine du site
+    } catch (e) {}
+    return new URL(".", location.href).href;
+  })();
+
+  var CONTENT_DIR = SITE_BASE + "content/";
 
   var el = {
     nav: document.getElementById("nav"),
@@ -56,12 +78,9 @@
 
     initSearch();
 
-    fetch(CONTENT_DIR + "manifest.json", { cache: "no-cache" })
-      .then(function (r) {
-        if (!r.ok) throw new Error("manifest.json introuvable (HTTP " + r.status + ")");
-        return r.json();
-      })
-      .then(function (manifest) {
+    fetchText(CONTENT_DIR + "manifest.json")
+      .then(function (txt) {
+        var manifest = JSON.parse(txt);
         state.manifest = manifest;
         if (manifest.title) document.title = manifest.title;
         flattenPages();
@@ -70,10 +89,35 @@
       })
       .catch(function (err) {
         el.article.innerHTML =
-          '<div class="callout callout-danger"><p><strong>Erreur de chargement.</strong> ' +
+          '<div class="callout callout-danger"><p><strong>Impossible de charger le guide.</strong></p>' +
+          "<p>" +
           escapeHtml(err.message) +
-          "</p><p>Ce site doit être servi via HTTP. En local, lancez un serveur : " +
-          "<code>python -m http.server</code> puis ouvrez <code>http://localhost:8000</code>.</p></div>";
+          "</p><p>Vérifiez que l'URL testée directement dans le navigateur répond bien :<br>" +
+          '<code>' +
+          escapeHtml(CONTENT_DIR + "manifest.json") +
+          "</code></p><p>En local, le site doit être servi via HTTP (pas <code>file://</code>) : " +
+          "<code>python -m http.server</code>.</p></div>";
+      });
+  }
+
+  // Récupère un fichier texte de façon robuste : d'abord avec revalidation,
+  // puis en repli sans option de cache (certains hébergeurs/proxies rejettent
+  // la requête conditionnelle avec un « Failed to fetch »).
+  function fetchText(url) {
+    return fetch(url, { cache: "no-cache" })
+      .catch(function () {
+        return fetch(url);
+      })
+      .then(function (r) {
+        if (!r.ok) {
+          throw new Error(
+            "Fichier absent ou inaccessible (HTTP " +
+              r.status +
+              ") : " +
+              url.replace(SITE_BASE, "")
+          );
+        }
+        return r.text();
       });
   }
 
@@ -182,11 +226,7 @@
       render(state.cache[page.slug]);
       return;
     }
-    fetch(CONTENT_DIR + page.file, { cache: "no-cache" })
-      .then(function (r) {
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        return r.text();
-      })
+    fetchText(CONTENT_DIR + page.file)
       .then(function (md) {
         state.cache[page.slug] = md;
         render(md);
@@ -194,11 +234,13 @@
       .catch(function (err) {
         el.article.removeAttribute("aria-busy");
         el.article.innerHTML =
-          '<div class="callout callout-danger"><p>Impossible de charger <code>' +
-          escapeHtml(page.file) +
-          "</code> (" +
+          '<div class="callout callout-danger"><p><strong>Impossible de charger cette page.</strong></p><p>' +
           escapeHtml(err.message) +
-          ").</p></div>";
+          "</p><p>URL attendue : <code>" +
+          escapeHtml(CONTENT_DIR + page.file) +
+          "</code><br>Ouvrez-la directement dans le navigateur : si elle renvoie 404, le fichier " +
+          "n'a pas été poussé sur GitHub ou la casse du nom diffère ; si le déploiement Pages " +
+          "vient d'être lancé, patientez une minute et rechargez.</p></div>";
       });
   }
 
@@ -402,10 +444,7 @@
     Promise.all(
       state.pages.map(function (p) {
         if (state.cache[p.slug] != null) return Promise.resolve(state.cache[p.slug]);
-        return fetch(CONTENT_DIR + p.file, { cache: "no-cache" })
-          .then(function (r) {
-            return r.ok ? r.text() : "";
-          })
+        return fetchText(CONTENT_DIR + p.file)
           .then(function (md) {
             state.cache[p.slug] = md;
             return md;
