@@ -1,0 +1,111 @@
+{
+  "title": "Guide Minecraft Forge 1.20.1",
+  "description": "Créer un mod Minecraft Forge 1.20.1, de A à Z, en équipe.",
+  "sections": [
+    {
+      "group": "Démarrer",
+      "pages": [
+        { "slug": "accueil", "title": "Introduction", "file": "accueil.md" },
+        { "slug": "prerequis", "title": "Prérequis & concepts clés", "file": "prerequis.md" },
+        { "slug": "jdk", "title": "Installer le JDK 17", "file": "jdk.md" }
+      ]
+    },
+    {
+      "group": "Créer le projet",
+      "pages": [
+        { "slug": "mdk", "title": "Le MDK Forge & Gradle", "file": "mdk.md" },
+        { "slug": "structure", "title": "Anatomie d'un projet Forge", "file": "structure.md" }
+      ]
+    },
+    {
+      "group": "Éditeurs",
+      "pages": [
+        { "slug": "intellij", "title": "IntelliJ IDEA (JetBrains)", "file": "intellij.md" },
+        { "slug": "vscode", "title": "Visual Studio Code", "file": "vscode.md" }
+      ]
+    },
+    {
+      "group": "Fondations du mod",
+      "pages": [
+        { "slug": "classe-principale", "title": "La classe principale du mod", "file": "classe-principale.md" },
+        { "slug": "evenements", "title": "Le système d'événements (catalogue)", "file": "evenements.md" },
+        { "slug": "registres-tags", "title": "Registres & tags en profondeur", "file": "registres-tags.md" },
+        { "slug": "nbt-codecs", "title": "NBT, sérialisation & Codecs", "file": "nbt-codecs.md" }
+      ]
+    },
+    {
+      "group": "Contenu : blocs & items",
+      "pages": [
+        { "slug": "blocs-items", "title": "Blocs, items & onglets créatifs", "file": "blocs-items.md" },
+        { "slug": "blocs-avances", "title": "Blocs avancés", "file": "blocs-avances.md" },
+        { "slug": "outils-armures", "title": "Outils, armes & armures", "file": "outils-armures.md" },
+        { "slug": "nourriture-cultures", "title": "Nourriture & cultures", "file": "nourriture-cultures.md" }
+      ]
+    },
+    {
+      "group": "Contenu : systèmes de jeu",
+      "pages": [
+        { "slug": "enchantements", "title": "Enchantements personnalisés", "file": "enchantements.md" },
+        { "slug": "effets-potions", "title": "Effets & potions", "file": "effets-potions.md" },
+        { "slug": "recettes-custom", "title": "Recettes personnalisées", "file": "recettes-custom.md" },
+        { "slug": "loot-modifiers", "title": "Modifier le butin (Global Loot Modifiers)", "file": "loot-modifiers.md" }
+      ]
+    },
+    {
+      "group": "Ressources & rendu",
+      "pages": [
+        { "slug": "ressources-assets", "title": "Ressources : modèles, textures, langues", "file": "ressources-assets.md" },
+        { "slug": "datagen", "title": "Génération de données (datagen)", "file": "datagen.md" },
+        { "slug": "sons", "title": "Sons personnalisés", "file": "sons.md" },
+        { "slug": "particules", "title": "Particules personnalisées", "file": "particules.md" },
+        { "slug": "modeles-rendu", "title": "Modèles, item overrides & rendu", "file": "modeles-rendu.md" }
+      ]
+    },
+    {
+      "group": "Systèmes & interactions",
+      "pages": [
+        { "slug": "config-reseau", "title": "Config, commandes & réseau", "file": "config-reseau.md" },
+        { "slug": "capabilities", "title": "Capabilities (données attachées)", "file": "capabilities.md" },
+        { "slug": "commandes-avancees", "title": "Commandes avancées (Brigadier)", "file": "commandes-avancees.md" },
+        { "slug": "gui-screens", "title": "Écrans & widgets", "file": "gui-screens.md" },
+        { "slug": "entites-ia-data", "title": "Entités : IA & synchronisation", "file": "entites-ia-data.md" }
+      ]
+    },
+    {
+      "group": "Recettes (exemples concrets)",
+      "pages": [
+        { "slug": "raycast", "title": "Lancer de rayon (raycasting)", "file": "raycast.md" },
+        { "slug": "item-comportement", "title": "Un item avec un comportement", "file": "item-comportement.md" },
+        { "slug": "block-entity", "title": "Un bloc avec inventaire & interface", "file": "block-entity.md" },
+        { "slug": "entite-projectile", "title": "Une entité & un projectile", "file": "entite-projectile.md" },
+        { "slug": "worldgen-minerai", "title": "Générer un minerai dans le monde", "file": "worldgen-minerai.md" },
+        { "slug": "hud-keybinds", "title": "Raccourcis clavier & overlay HUD", "file": "hud-keybinds.md" }
+      ]
+    },
+    {
+      "group": "Travailler en équipe",
+      "pages": [
+        { "slug": "git", "title": "Travailler à plusieurs avec Git", "file": "git.md" },
+        { "slug": "github", "title": "GitHub : dépôt, CI & releases", "file": "github.md" }
+      ]
+    },
+    {
+      "group": "Aller plus loin",
+      "pages": [
+        { "slug": "mixins", "title": "Mixins (dernier recours)", "file": "mixins.md" },
+        { "slug": "access-transformers", "title": "Access Transformers", "file": "access-transformers.md" },
+        { "slug": "compatibilite", "title": "Compatibilité entre mods", "file": "compatibilite.md" }
+      ]
+    },
+    {
+      "group": "Qualité & référence",
+      "pages": [
+        { "slug": "bonnes-pratiques", "title": "Bonnes pratiques (checklist)", "file": "bonnes-pratiques.md" },
+        { "slug": "tests", "title": "Tester son mod", "file": "tests.md" },
+        { "slug": "performance", "title": "Performance & profilage", "file": "performance.md" },
+        { "slug": "debogage", "title": "Débogage & problèmes fréquents", "file": "debogage.md" },
+        { "slug": "liens", "title": "Ressources & liens utiles", "file": "liens.md" }
+      ]
+    }
+  ]
+}

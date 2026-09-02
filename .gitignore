@@ -1,0 +1,9 @@
+# Ce dépôt est un site statique : rien à compiler.
+# On ignore seulement les fichiers d'outillage local et d'OS.
+
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
