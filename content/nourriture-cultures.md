@@ -193,4 +193,4 @@ this.add(ModBlocks.SPICY_CROP.get(), this.createCropDrops(
 | La culture pousse hors de la terre labourée | `mayPlaceOn` non hérité / mauvaise `Properties` | `Properties.copy(Blocks.WHEAT)` ou surcharger `mayPlaceOn` |
 | Effet d'aliment jamais appliqué côté client | logique dans `finishUsingItem` sans garde serveur | `if (!level.isClientSide())` |
 
-Page suivante : **[Enchantements personnalisés](#/enchantements)**.
+Page suivante : **[Fluides personnalisés](#/fluides)**.

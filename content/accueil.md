@@ -29,10 +29,11 @@ Il est pensé pour être suivi aussi bien avec **IntelliJ IDEA** (JetBrains) qu'
 
 - **Démarrer** : environnement (JDK 17, MDK, Gradle), IntelliJ IDEA, VS Code, anatomie d'un projet.
 - **Fondations** : classe `@Mod`, [catalogue des événements](#/evenements), [registres & tags](#/registres-tags), [NBT & Codecs](#/nbt-codecs).
-- **Contenu — blocs & items** : [blocs & items](#/blocs-items), [blocs à états / formes / ticks](#/blocs-avances), [outils & armures](#/outils-armures), [nourriture & cultures](#/nourriture-cultures).
-- **Contenu — systèmes de jeu** : [enchantements](#/enchantements), [effets & potions](#/effets-potions), [recettes personnalisées](#/recettes-custom), [modificateurs de butin](#/loot-modifiers).
-- **Ressources & rendu** : [assets](#/ressources-assets), [datagen](#/datagen), [sons](#/sons), [particules](#/particules), [modèles & rendu](#/modeles-rendu).
-- **Systèmes & interactions** : [config & réseau](#/config-reseau), [capabilities](#/capabilities), [commandes Brigadier](#/commandes-avancees), [écrans & widgets](#/gui-screens), [IA & synchro d'entités](#/entites-ia-data).
+- **Contenu — blocs & items** : [blocs & items](#/blocs-items), [blocs à états / formes / ticks](#/blocs-avances), [outils & armures](#/outils-armures), [nourriture & cultures](#/nourriture-cultures), [fluides](#/fluides).
+- **Contenu — systèmes de jeu** : [enchantements](#/enchantements), [effets & potions](#/effets-potions), [recettes personnalisées](#/recettes-custom), [modificateurs de butin](#/loot-modifiers), [types de dégâts](#/degats-types).
+- **Ressources & rendu** : [assets](#/ressources-assets), [datagen](#/datagen), [sons](#/sons), [particules](#/particules), [modèles & rendu](#/modeles-rendu), [overlays & HUD](#/overlays-hud).
+- **Systèmes & interactions** : [config & réseau](#/config-reseau), [capabilities](#/capabilities), [commandes Brigadier](#/commandes-avancees), [écrans & widgets](#/gui-screens), [conteneurs & menus](#/conteneurs-menus), [IA & synchro d'entités](#/entites-ia-data).
+- **Créatures & monde** : [IA des mobs en profondeur](#/ia-avancee), [élevage & apprivoisement](#/elevage-apprivoisement), [métiers & commerce des villageois](#/villageois-metiers), [créer un boss](#/boss), [structures & villages](#/structures).
 - **Recettes concrètes** : [raycast](#/raycast), [items à comportement](#/item-comportement), [blocs avec interface](#/block-entity), [entités & projectiles](#/entite-projectile), [génération de minerai](#/worldgen-minerai), [raccourcis & HUD](#/hud-keybinds).
 - **En équipe** : [Git](#/git), [GitHub : dépôt, CI, releases](#/github).
 - **Aller plus loin** : [mixins](#/mixins), [access transformers](#/access-transformers), [compatibilité inter-mods](#/compatibilite).

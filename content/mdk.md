@@ -29,7 +29,9 @@ MonMod/
 │   └── wrapper/
 ├── src/
 │   └── main/
-│       ├── java/com/example/examplemod/ExampleMod.java
+│       ├── java/com/example/examplemod/
+│       │   ├── ExampleMod.java       # classe @Mod principale + mod d'exemple
+│       │   └── Config.java           # config d'exemple (ForgeConfigSpec) — voir plus bas
 │       └── resources/META-INF/mods.toml
 ├── LICENSE.txt
 └── changelog.txt
@@ -205,13 +207,19 @@ Minecraft démarre. Dans **Mods**, vous devez voir « Example Mod ». En jeu, un
 
 > :astuce: Le monde de test, les logs et les options sont dans le dossier **`run/`**. Ce dossier ne doit **jamais** être committé (voir [Git](#/git)).
 
-## 7. Nettoyer l'exemple
+## 7. Les deux fichiers Java du MDK
 
-Une fois que tout fonctionne, dans `ExampleMod.java` :
+Le MDK ne fournit **que deux classes** :
 
-- gardez la structure (constructeur, `@Mod`, logger) ;
-- supprimez ou commentez le contenu d'exemple (bloc `EXAMPLE_BLOCK`, item `EXAMPLE_ITEM`, l'onglet, les abonnements de démonstration) ;
-- vous repartirez proprement dans [La classe principale du mod](#/classe-principale).
+- **`ExampleMod.java`** — la classe `@Mod` (point d'entrée) + un mini-mod de démonstration (un bloc, un item, un onglet créatif, quelques abonnements d'événements).
+- **`Config.java`** — un exemple de **configuration** avec `ForgeConfigSpec`. Il n'est **pas obligatoire**, mais montre le pattern recommandé. Son fonctionnement est détaillé dans [Anatomie d'un projet Forge](#/structure#config-java-la-config-d-exemple-du-mdk).
+
+## 8. Nettoyer l'exemple
+
+Une fois que tout fonctionne :
+
+- **`ExampleMod.java`** : gardez la structure (constructeur, `@Mod`, logger, enregistrement de la config) ; supprimez le contenu d'exemple (`EXAMPLE_BLOCK`, `EXAMPLE_ITEM`, l'onglet, les abonnements de démonstration). Vous repartirez proprement dans [La classe principale du mod](#/classe-principale).
+- **`Config.java`** : gardez-le comme **modèle** (remplacez les valeurs d'exemple `logDirtBlock` / `magicNumber` par les vôtres) **ou** supprimez-le si votre mod n'a pas de config au départ — vous pourrez toujours en ajouter une plus tard ([Config, commandes & réseau](#/config-reseau)).
 
 ## Problèmes fréquents au premier build
 

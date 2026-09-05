@@ -169,4 +169,4 @@ public class ModGlobalLootModifiers extends GlobalLootModifierProvider {
 | `doApply` ne voit pas le contexte attendu (`getParamOrNull`) | paramètre absent de ce type de table | tester la nullité, ou restreindre via `forge:loot_table_id` |
 | Double application | modifier listé deux fois, ou deux mods | dédupliquer, vérifier l'ordre |
 
-Page suivante : **[Ressources : modèles, textures, langues](#/ressources-assets)**.
+Page suivante : **[Types de dégâts personnalisés](#/degats-types)**.

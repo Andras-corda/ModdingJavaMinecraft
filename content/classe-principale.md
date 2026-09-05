@@ -38,8 +38,10 @@ public class MonMod {
         // 3. Abonnement de cette instance au FORGE event bus (événements de jeu).
         MinecraftForge.EVENT_BUS.register(this);
 
-        // 4. Configuration (voir page Config & réseau).
-        // ModConfig.register();
+        // 4. Configuration : enregistre le ForgeConfigSpec pour que Forge
+        //    crée et charge le fichier .toml. (Classe Config.java du MDK —
+        //    voir « Anatomie d'un projet Forge » et « Config & réseau ».)
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

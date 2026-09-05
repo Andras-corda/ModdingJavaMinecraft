@@ -187,7 +187,10 @@ a:hover {
   color: var(--text);
 }
 .menu-toggle {
-  display: none;
+  display: inline-flex;
+}
+.sidebar-collapsed .menu-toggle {
+  color: var(--accent-text);
 }
 
 #theme-toggle .icon-moon {
@@ -298,9 +301,32 @@ a:hover {
   top: var(--topbar-h);
   align-self: start;
   height: calc(100vh - var(--topbar-h));
+  min-width: 0;
   overflow-y: auto;
   border-right: 1px solid var(--border);
   padding: 24px 14px 40px;
+  transition: opacity 0.12s ease;
+}
+
+/* Barre latérale rétractée (bureau) — via classe sur <html> */
+@media (min-width: 861px) {
+  .sidebar-collapsed .layout {
+    grid-template-columns: 0 minmax(0, 1fr) var(--toc-w);
+  }
+  .sidebar-collapsed .sidebar {
+    opacity: 0;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+    border-right-color: transparent;
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+@media (min-width: 861px) and (max-width: 1180px) {
+  .sidebar-collapsed .layout {
+    grid-template-columns: 0 minmax(0, 1fr);
+  }
 }
 .nav-group {
   margin-bottom: 22px;

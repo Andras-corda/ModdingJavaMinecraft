@@ -4,6 +4,8 @@ Trois briques transverses : la **configuration**, les **commandes**, et la **com
 
 ## Configuration avec `ForgeConfigSpec`
 
+> :info: Le MDK fournit déjà une classe **`Config.java`** d'exemple. Son fonctionnement (pattern `BUILDER` → `SPEC` → `onLoad(ModConfigEvent)`, fichier `.toml` généré, enregistrement dans le constructeur) est décrit en détail dans [Anatomie d'un projet Forge](#/structure#config-java-la-config-d-exemple-du-mdk). Cette page va plus loin : portées, groupes, `SERVER` synchronisé, réaction aux changements.
+
 Forge fournit un système de config TOML avec rechargement. Trois portées :
 
 | Type | Fichier | Chargé où | Pour quoi |

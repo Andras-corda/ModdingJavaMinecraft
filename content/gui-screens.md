@@ -181,4 +181,4 @@ public class ManaBarWidget extends AbstractWidget {
 | Texte coupé / débordant | pas de `enableScissor` sur une zone défilante | délimiter avec scissor |
 | Données modifiées non sauvegardées | l'écran ne persiste rien | envoyer un paquet / écrire la config à la fermeture |
 
-Page suivante : **[Entités : IA & synchronisation](#/entites-ia-data)**.
+Page suivante : **[Conteneurs & menus (GUI à slots)](#/conteneurs-menus)**.

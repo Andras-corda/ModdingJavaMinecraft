@@ -185,4 +185,4 @@ this.getAttribute(Attributes.ARMOR).addPermanentModifier(new AttributeModifier(
 | Goal custom jamais lancé | `getFlags()` en conflit avec un goal plus prioritaire | limiter les `Flag`, ajuster la priorité |
 | Données de spawn absentes côté client | `IEntityAdditionalSpawnData` non implémenté / `EntityType.Builder` sans `setCustomClientFactory` (Forge le gère par défaut en 1.20.1) | implémenter l'interface |
 
-Page suivante : **[Lancer de rayon (raycasting)](#/raycast)**.
+Page suivante : **[IA des mobs, en profondeur](#/ia-avancee)**.

@@ -64,6 +64,7 @@
   // --------------------------------------------------------------------------
   function init() {
     initTheme();
+    initSidebar();
 
     if (CONFIG.repoUrl && el.repoLink) {
       el.repoLink.href = CONFIG.repoUrl;
@@ -411,13 +412,35 @@
   }
 
   // --------------------------------------------------------------------------
-  // Menu mobile
+  // Barre latérale : tiroir sur mobile, repli sur bureau
   // --------------------------------------------------------------------------
-  function toggleSidebar() {
-    document.body.classList.toggle("sidebar-open");
+  function isMobile() {
+    return window.matchMedia("(max-width: 860px)").matches;
   }
+
+  function toggleSidebar() {
+    if (isMobile()) {
+      document.body.classList.toggle("sidebar-open");
+      return;
+    }
+    var collapsed = document.documentElement.classList.toggle("sidebar-collapsed");
+    try {
+      localStorage.setItem("sidebar", collapsed ? "collapsed" : "expanded");
+    } catch (e) {}
+  }
+
   function closeSidebar() {
     document.body.classList.remove("sidebar-open");
+  }
+
+  function initSidebar() {
+    var saved = null;
+    try {
+      saved = localStorage.getItem("sidebar");
+    } catch (e) {}
+    if (saved === "collapsed") {
+      document.documentElement.classList.add("sidebar-collapsed");
+    }
   }
 
   // --------------------------------------------------------------------------

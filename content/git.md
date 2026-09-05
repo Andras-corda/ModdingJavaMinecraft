@@ -2,7 +2,7 @@
 
 Un projet de mod partagé qui n'est pas rigoureux sur Git devient vite ingérable : conflits sur des fichiers générés, versions de Forge qui divergent, `run/` committé par erreur. Cette page donne une méthode qui tient.
 
-## 1. Initialiser le dépôt
+## 1. Initialiser le dépôt (créateur du projet)
 
 Depuis le dossier du projet (le MDK contient déjà un `.gitignore`) :
 
@@ -12,6 +12,42 @@ git branch -M main
 git add .
 git commit -m "chore: import du MDK Forge 1.20.1"
 ```
+
+## 1 bis. Rejoindre un projet existant (nouveau collaborateur)
+
+> **« J'ai cloné le dépôt mais il n'y a pas de dossier `build/`. Comment je récupère le projet ? »**
+>
+> C'est normal : **`build/` (comme `.gradle/`, `run/`, `.idea/`, `out/`) n'est jamais committé.** Ce sont des dossiers **générés**. Tout ce qu'il faut pour reconstruire le projet est dans le dépôt : le code source, `build.gradle`, `gradle.properties`, et le *Gradle wrapper*.
+
+Marche à suivre :
+
+```bash
+# 1. Cloner
+git clone https://github.com/VOTRE-EQUIPE/VOTRE-MOD.git
+cd VOTRE-MOD
+
+# 2. Vérifier le JDK (doit afficher 17.x — voir la page JDK)
+./gradlew -version
+
+# 3. Construire : Gradle télécharge Minecraft + Forge, décompile le jeu,
+#    et (re)crée build/, .gradle/, les configs de lancement...
+./gradlew build
+```
+
+Le **premier `build` prend 5 à 15 minutes** (téléchargement + décompilation). Les suivants sont rapides. Ensuite :
+
+```bash
+./gradlew runClient        # lance le jeu avec le mod
+```
+
+Ou, dans un IDE :
+
+- **IntelliJ IDEA** : *File → Open* → choisir le **dossier** cloné. L'import Gradle fait le reste et génère les configs `runClient` / `runData` (voir [IntelliJ](#/intellij)).
+- **VS Code** : *File → Open Folder*, attendre l'indexation, puis `./gradlew genVSCodeRuns` (voir [VS Code](#/vscode)).
+
+> :attention: **Ne copiez jamais** `build/`, `.gradle/`, `run/`, `.idea/`, `*.iml` depuis le poste d'un autre : ils contiennent des chemins absolus et des caches spécifiques à sa machine, et provoquent des erreurs. Chacun les régénère localement.
+>
+> Si quelqu'un a committé `build/` ou `run/` par erreur : `git rm -r --cached build run` puis commit (voir plus bas).
 
 ## 2. `.gitignore` : la pièce maîtresse
 

@@ -215,4 +215,4 @@ Pour des modèles générés à l'exécution (câbles connectés, textures assem
 | Teinte non appliquée | `"tintindex"` absent du modèle | l'ajouter aux faces concernées |
 | `RenderLevelStageEvent` : objets « collés » à la caméra | translation caméra oubliée | `pose.translate(-cam.x, -cam.y, -cam.z)` |
 
-Page suivante : **[Config, commandes & réseau](#/config-reseau)**.
+Page suivante : **[Overlays & HUD](#/overlays-hud)**.

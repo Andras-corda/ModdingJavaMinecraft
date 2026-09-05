@@ -20,6 +20,7 @@ MonMod/
 │   │   ├── java/                 # VOTRE CODE
 │   │   │   └── fr/monequipe/monmod/
 │   │   │       ├── MonMod.java            # classe @Mod principale
+│   │   │       ├── Config.java            # config du mod (ForgeConfigSpec) — fourni par le MDK
 │   │   │       ├── registry/
 │   │   │       │   ├── ModBlocks.java
 │   │   │       │   ├── ModItems.java
@@ -28,8 +29,7 @@ MonMod/
 │   │   │       ├── item/                  # classes d'items custom
 │   │   │       ├── client/                # code CLIENT UNIQUEMENT
 │   │   │       ├── datagen/               # providers de datagen
-│   │   │       ├── network/               # paquets réseau
-│   │   │       └── config/                # ForgeConfigSpec
+│   │   │       └── network/               # paquets réseau
 │   │   │
 │   │   └── resources/            # RESSOURCES STATIQUES
 │   │       ├── META-INF/
@@ -126,6 +126,128 @@ Déclare la version de format des packs. Pour 1.20.1 :
 ```
 
 `pack_format` **15** correspond à 1.20.1. (Il change à chaque version majeure de Minecraft.)
+
+## `Config.java` — la config d'exemple du MDK
+
+Le MDK fournit, **à côté de `ExampleMod.java`**, une classe `Config.java`. Elle n'est **pas obligatoire** mais montre comment déclarer une configuration lisible/éditable par le joueur, via l'API **`ForgeConfigSpec`** de Forge. Forge se charge de créer le fichier, de le charger, de le valider et de le recharger.
+
+### Le fichier du MDK (traduit et commenté)
+
+```java
+package com.example.examplemod;
+
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+@Mod.EventBusSubscriber(modid = ExampleMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class Config {
+
+    // 1. Un "builder" qui accumule les déclarations de valeurs
+    private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+
+    // 2. Chaque valeur : type, commentaire (-> écrit dans le .toml), clé, défaut, bornes
+    private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
+            .comment("Journaliser le bloc de terre au démarrage")
+            .define("logDirtBlock", true);
+
+    private static final ForgeConfigSpec.IntValue MAGIC_NUMBER = BUILDER
+            .comment("Un nombre magique")
+            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+
+    public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
+            .comment("Le message d'introduction du nombre magique")
+            .define("magicNumberIntroduction", "Le nombre magique est... ");
+
+    // Une liste, avec un validateur appliqué à chaque élément
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
+            .comment("Une liste d'items à journaliser au démarrage.")
+            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
+
+    // 3. On "ferme" le builder : SPEC est ce qu'on enregistre auprès de Forge
+    static final ForgeConfigSpec SPEC = BUILDER.build();
+
+    // 4. Des champs simples, remplis une fois au chargement (voir onLoad).
+    //    Le code du jeu lit `Config.magicNumber` — pas de `.get()` à chaque appel.
+    public static boolean logDirtBlock;
+    public static int magicNumber;
+    public static String magicNumberIntroduction;
+    public static Set<Item> items;
+
+    private static boolean validateItemName(final Object obj) {
+        return obj instanceof final String itemName
+                && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemName));
+    }
+
+    // 5. Appelé par Forge à chaque (re)chargement de la config
+    @SubscribeEvent
+    static void onLoad(final ModConfigEvent event) {
+        logDirtBlock = LOG_DIRT_BLOCK.get();
+        magicNumber = MAGIC_NUMBER.get();
+        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+        items = ITEM_STRINGS.get().stream()
+                .map(name -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(name)))
+                .collect(Collectors.toSet());
+    }
+}
+```
+
+### Ce qu'il faut retenir du pattern
+
+1. **`BUILDER`** accumule les déclarations. Chaque `.define(...)` renvoie un objet (`BooleanValue`, `IntValue`, `ConfigValue<T>`…) qu'on garde.
+2. **`.comment(...)`** devient un commentaire dans le fichier `.toml` — soignez-le, c'est la doc que verra le joueur.
+3. **`SPEC = BUILDER.build()`** fige la spécification. C'est `SPEC` qu'on enregistre.
+4. Le **`@Mod.EventBusSubscriber(bus = MOD)`** + **`onLoad(ModConfigEvent)`** recopie les valeurs dans des champs `static` simples, **une seule fois** au chargement. Le reste du code lit `Config.magicNumber` directement.
+5. `defineInRange` (bornes), `defineListAllowEmpty` (+ validateur par élément), `defineEnum`, `defineList`… voir [Config, commandes & réseau](#/config-reseau).
+
+### L'enregistrement, dans `ExampleMod.java`
+
+Le constructeur `@Mod` contient :
+
+```java
+// Demande à Forge de créer et charger le fichier de config du mod
+ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+```
+
+### Le fichier généré
+
+Au premier lancement, Forge écrit **`run/config/examplemod-common.toml`** :
+
+```toml
+#Journaliser le bloc de terre au démarrage
+logDirtBlock = true
+#Un nombre magique
+#Range: 0 ~ 2147483647
+magicNumber = 42
+#Le message d'introduction du nombre magique
+magicNumberIntroduction = "Le nombre magique est... "
+#Une liste d'items à journaliser au démarrage.
+items = ["minecraft:iron_ingot"]
+```
+
+Le joueur édite ce fichier ; `/reload` ou un redémarrage applique les changements (et `onLoad` est rappelé).
+
+### `COMMON`, `CLIENT` ou `SERVER` ?
+
+`registerConfig` prend un **type** qui décide où et comment la config vit :
+
+| Type | Fichier | Portée |
+|------|---------|--------|
+| `COMMON` | `run/config/<modid>-common.toml` | client **et** serveur, non synchronisé — pour ce qui ne touche pas au réseau |
+| `CLIENT` | `run/config/<modid>-client.toml` | client seulement — affichage, sons, raccourcis |
+| `SERVER` | `<monde>/serverconfig/<modid>-server.toml` | serveur, **synchronisé au client**, **par monde** — équilibrage, règles de jeu |
+
+Le MDK utilise `COMMON`. Détails et exemples avancés : [Config, commandes & réseau](#/config-reseau).
+
+> :astuce: Vous pouvez garder `Config.java` comme **modèle** (remplacez `logDirtBlock`/`magicNumber` par vos vraies options) ou le **supprimer** si votre mod n'a pas encore de config — dans ce cas, retirez aussi la ligne `registerConfig(...)` de `ExampleMod.java`.
 
 ## Le dossier `src/generated/`
 

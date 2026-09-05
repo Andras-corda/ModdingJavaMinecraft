@@ -11,7 +11,9 @@
     <meta name="theme-color" content="#1c6b3c" />
     <title>Guide Minecraft Forge 1.20.1</title>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- ?v=… : incrémentez ce numéro à chaque modif d'un fichier CSS/JS
+         pour forcer les navigateurs à recharger (contourne le cache). -->
+    <link rel="stylesheet" href="assets/css/style.css?v=5" />
     <script>
       /* ------------------------------------------------------------------
        * Personnalisez ces valeurs après avoir publié le dépôt.
@@ -19,12 +21,15 @@
       window.SITE_CONFIG = {
         repoUrl: "https://github.com/VOTRE-UTILISATEUR/VOTRE-DEPOT",
       };
-      /* Applique le thème enregistré avant le premier rendu (anti-flash). */
+      /* Applique le thème + l'état de la barre latérale avant le premier
+       * rendu (anti-flash). */
       (function () {
         try {
           var t = localStorage.getItem("theme");
           if (t === "dark" || t === "light")
             document.documentElement.setAttribute("data-theme", t);
+          if (localStorage.getItem("sidebar") === "collapsed")
+            document.documentElement.classList.add("sidebar-collapsed");
         } catch (e) {}
       })();
     </script>
@@ -37,7 +42,8 @@
         id="menu-toggle"
         class="icon-btn menu-toggle"
         type="button"
-        aria-label="Ouvrir le menu"
+        aria-label="Afficher ou masquer le menu"
+        title="Afficher ou masquer le menu"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
           <path
@@ -140,8 +146,8 @@
       <aside id="toc" class="toc" aria-label="Sommaire de la page"></aside>
     </div>
 
-    <script src="assets/js/highlight.js"></script>
-    <script src="assets/js/markdown.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/highlight.js?v=5"></script>
+    <script src="assets/js/markdown.js?v=5"></script>
+    <script src="assets/js/app.js?v=5"></script>
   </body>
 </html>

@@ -39,7 +39,8 @@
         { "slug": "blocs-items", "title": "Blocs, items & onglets créatifs", "file": "blocs-items.md" },
         { "slug": "blocs-avances", "title": "Blocs avancés", "file": "blocs-avances.md" },
         { "slug": "outils-armures", "title": "Outils, armes & armures", "file": "outils-armures.md" },
-        { "slug": "nourriture-cultures", "title": "Nourriture & cultures", "file": "nourriture-cultures.md" }
+        { "slug": "nourriture-cultures", "title": "Nourriture & cultures", "file": "nourriture-cultures.md" },
+        { "slug": "fluides", "title": "Fluides personnalisés", "file": "fluides.md" }
       ]
     },
     {
@@ -48,7 +49,8 @@
         { "slug": "enchantements", "title": "Enchantements personnalisés", "file": "enchantements.md" },
         { "slug": "effets-potions", "title": "Effets & potions", "file": "effets-potions.md" },
         { "slug": "recettes-custom", "title": "Recettes personnalisées", "file": "recettes-custom.md" },
-        { "slug": "loot-modifiers", "title": "Modifier le butin (Global Loot Modifiers)", "file": "loot-modifiers.md" }
+        { "slug": "loot-modifiers", "title": "Modifier le butin (Global Loot Modifiers)", "file": "loot-modifiers.md" },
+        { "slug": "degats-types", "title": "Types de dégâts personnalisés", "file": "degats-types.md" }
       ]
     },
     {
@@ -58,7 +60,8 @@
         { "slug": "datagen", "title": "Génération de données (datagen)", "file": "datagen.md" },
         { "slug": "sons", "title": "Sons personnalisés", "file": "sons.md" },
         { "slug": "particules", "title": "Particules personnalisées", "file": "particules.md" },
-        { "slug": "modeles-rendu", "title": "Modèles, item overrides & rendu", "file": "modeles-rendu.md" }
+        { "slug": "modeles-rendu", "title": "Modèles, item overrides & rendu", "file": "modeles-rendu.md" },
+        { "slug": "overlays-hud", "title": "Overlays & HUD", "file": "overlays-hud.md" }
       ]
     },
     {
@@ -68,7 +71,18 @@
         { "slug": "capabilities", "title": "Capabilities (données attachées)", "file": "capabilities.md" },
         { "slug": "commandes-avancees", "title": "Commandes avancées (Brigadier)", "file": "commandes-avancees.md" },
         { "slug": "gui-screens", "title": "Écrans & widgets", "file": "gui-screens.md" },
+        { "slug": "conteneurs-menus", "title": "Conteneurs & menus (GUI à slots)", "file": "conteneurs-menus.md" },
         { "slug": "entites-ia-data", "title": "Entités : IA & synchronisation", "file": "entites-ia-data.md" }
+      ]
+    },
+    {
+      "group": "Créatures & monde",
+      "pages": [
+        { "slug": "ia-avancee", "title": "IA des mobs, en profondeur", "file": "ia-avancee.md" },
+        { "slug": "elevage-apprivoisement", "title": "Élevage & apprivoisement", "file": "elevage-apprivoisement.md" },
+        { "slug": "villageois-metiers", "title": "Métiers & commerce des villageois", "file": "villageois-metiers.md" },
+        { "slug": "boss", "title": "Créer un boss", "file": "boss.md" },
+        { "slug": "structures", "title": "Structures & génération (villages…)", "file": "structures.md" }
       ]
     },
     {

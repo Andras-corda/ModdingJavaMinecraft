@@ -41,9 +41,12 @@ Alternatives : `npx serve`, l'extension *Live Server* de VS Code, `php -S localh
 
 1. Éditez le fichier `.md` concerné dans [`content/`](content/).
 2. Pour **ajouter** une page : créez `content/ma-page.md` puis ajoutez une entrée dans
-   `content/manifest.json` (section, `slug`, `title`, `file`).
-3. Rechargez la page (pensez à vider le cache : les fichiers sont servis avec `no-cache`,
-   mais le navigateur peut être tenace — `Ctrl+F5`).
+   `content/manifest.json` (section, `slug`, `title`, `file`). Terminez la page par une ligne
+   `Page suivante : **[Titre](#/slug)**` pointant vers la page suivante du manifest.
+3. Rechargez la page (`Ctrl+F5` pour forcer).
+4. **Si vous modifiez un fichier `assets/css/*.css` ou `assets/js/*.js`** : incrémentez le
+   `?v=…` des balises `<link>` / `<script>` dans [`index.html`](index.html). Sinon les
+   navigateurs (et GitHub Pages) continuent de servir l'ancienne version pendant ~10 min.
 
 ### Syntaxe Markdown prise en charge
 
