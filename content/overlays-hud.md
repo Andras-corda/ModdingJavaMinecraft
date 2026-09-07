@@ -163,4 +163,4 @@ La barre de boss vanilla est un overlay (`BOSS_EVENT_PROGRESS`) alimenté par le
 | FPS en baisse | allocations / calculs lourds par frame | mettre en cache, voir [Performance](#/performance) |
 | `RenderGuiOverlayEvent.Pre` annulé sans effet | mauvais `id()` comparé | comparer avec `VanillaGuiOverlay.X.id()` |
 
-Page suivante : **[Config, commandes & réseau](#/config-reseau)**.
+Page suivante : **[Blockbench : prise en main](#/blockbench-prise-en-main)**.

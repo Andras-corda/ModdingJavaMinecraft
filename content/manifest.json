@@ -65,6 +65,16 @@
       ]
     },
     {
+      "group": "Modélisation & texturing",
+      "pages": [
+        { "slug": "blockbench-prise-en-main", "title": "Blockbench : prise en main", "file": "blockbench-prise-en-main.md" },
+        { "slug": "pixel-art-textures", "title": "Pixel art & textures Minecraft", "file": "pixel-art-textures.md" },
+        { "slug": "blockbench-blocs-items", "title": "Blockbench : blocs & items", "file": "blockbench-blocs-items.md" },
+        { "slug": "blockbench-entites-geckolib", "title": "Blockbench : entités & GeckoLib", "file": "blockbench-entites-geckolib.md" },
+        { "slug": "export-import-modeles", "title": "Export & import de modèles", "file": "export-import-modeles.md" }
+      ]
+    },
+    {
       "group": "Systèmes & interactions",
       "pages": [
         { "slug": "config-reseau", "title": "Config, commandes & réseau", "file": "config-reseau.md" },

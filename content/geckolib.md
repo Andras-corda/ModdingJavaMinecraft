@@ -1,8 +1,10 @@
 # GeckoLib : animations
 
-**GeckoLib** est le moteur d'animation de référence pour Forge/NeoForge. Il joue des animations créées dans **[Blockbench](https://www.blockbench.net/)** (plugin *Animated Java* / format *Bedrock*) sur des **entités**, **block entities**, **items** et **armures**.
+**GeckoLib** est le moteur d'animation de référence pour Forge/NeoForge. Il joue des animations créées dans **[Blockbench](https://www.blockbench.net/)** sur des **entités**, **block entities**, **items** et **armures**.
 
 Sans GeckoLib, une entité animée demande d'écrire à la main un `HierarchicalModel` + interpolation ; avec, on fournit trois fichiers et une classe.
+
+Cette page est le **volet code**. Pour **créer et exporter** le modèle et les animations depuis Blockbench, voir [Blockbench : entités & GeckoLib](#/blockbench-entites-geckolib).
 
 > :attention: **Versions.** Cette page vise **GeckoLib 4.x pour 1.20.1**. L'API a beaucoup changé entre la 3 et la 4. Vérifiez la version exacte sur [modrinth.com/mod/geckolib](https://modrinth.com/mod/geckolib) et suivez le [wiki officiel](https://github.com/bernie-g/geckolib/wiki) qui fait foi.
 

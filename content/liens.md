@@ -27,7 +27,8 @@
 - **IntelliJ IDEA Community** : [jetbrains.com/idea/download](https://www.jetbrains.com/idea/download/)
 - **Plugin Minecraft Development (IntelliJ)** : [plugins.jetbrains.com/plugin/8327](https://plugins.jetbrains.com/plugin/8327-minecraft-development)
 - **VS Code — Extension Pack for Java** : [marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
-- **Blockbench** (modèles & textures de blocs/items/entités) : [blockbench.net](https://www.blockbench.net/)
+- **Blockbench** (modèles & textures de blocs/items/entités) : [blockbench.net](https://www.blockbench.net/) — chapitre dédié : [Modélisation & texturing](#/blockbench-prise-en-main)
+- **Lospec** (palettes de pixel art) : [lospec.com/palette-list](https://lospec.com/palette-list)
 - **MCreator** : [mcreator.net](https://mcreator.net/) — générateur visuel ; utile pour prototyper, mais ce guide vise le code direct.
 
 ## Bibliothèques & intégrations courantes

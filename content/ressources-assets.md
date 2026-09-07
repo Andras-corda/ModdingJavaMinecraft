@@ -4,6 +4,8 @@ Un item ou bloc enregistré a besoin de **ressources client** pour être visible
 
 Toutes ces ressources vivent dans `src/main/resources/assets/monmod/`.
 
+> :astuce: Pour **dessiner** les modèles et les textures plutôt que d'écrire du JSON, voir le chapitre [Modélisation & texturing](#/blockbench-prise-en-main) (Blockbench, pixel art, export/import).
+
 ## Textures
 
 - Format **PNG**, généralement **16×16** pixels.
